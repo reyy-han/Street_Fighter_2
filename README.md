@@ -1,92 +1,66 @@
 # Street Fighter PAF
 
 
+## Projet PAF (Programmation Avancée Fonctionnelle)
 
-## Getting started
+Le but du projet était de réaliser une refonte du jeu Street Fighter 2 à l'aide du langage fonctionel Haskell.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+### Fonctionnalités:
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+Les deux joueurs peuvent : 
+- bouger à droite et à gauche
+- sauter par dessus leur adversaire
+- faire un coup de pied
+- faire un coup de point lorsque leur jauge est pleine (en rouge)
 
-## Add your files
+A chaque coup reçu, le joueur perd un peu de vie.
+Lorsque l'un des joueurs n'a plus de vie, le jeu se termine et on affiche le gagnant.
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+### Motricité des joueurs
 
-```
-cd existing_repo
-git remote add origin https://stl.algo-prog.info/3800099/street_fighter_PAF.git
-git branch -M main
-git push -uf origin main
-```
+Ryu (à gauche au départ)
 
-## Integrate with your tools
+|              | Button              |
+|--------------|---------------------|
+| Move Left    | <kbd>left</kbd>     |
+| Move right   | <kbd>right</kbd>    |
+| Move Up      | <kbd>up</kbd>       |
+| Kick         | <kbd>down</kbd>     |
+| Punch        | <kbd>enter</kbd>    |
 
-- [ ] [Set up project integrations](https://stl.algo-prog.info/3800099/street_fighter_PAF/-/settings/integrations)
+Ken (à droite)
 
-## Collaborate with your team
+|              | Button              |
+|--------------|---------------------|
+| Move Left    | <kbd>Q</kbd>        |
+| Move right   | <kbd>D</kbd>        |
+| Move Up      | <kbd>Z</kbd>        |
+| Kick         | <kbd>S</kbd>        |
+| Punch        | <kbd>space</kbd>    |
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
 
-## Test and Deploy
+### Vue du Jeu
 
-Use the built-in continuous integration in GitLab.
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+![paf-jeu-init](https://user-images.githubusercontent.com/79942403/194407208-a1c26ba6-93a1-4ebe-96d2-ab5193e216ba.png)
+figure 1 : Vue sur le jeu au démarrage
 
-***
+![jeu_paf_coup_pied](https://user-images.githubusercontent.com/79942403/194407576-5de5b5b3-48ad-40fe-ba21-03765ef6b026.png)
+figure 2 : Ryu frappe Ken avec son pied (Kick)
 
-# Editing this README
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!).  Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
+![paf-jeu-jauge-remplie](https://user-images.githubusercontent.com/79942403/194407737-3408ff3e-f443-45fd-bf30-1f85fea3b6da.png)
+figure 3 : Les jauges sont remplies
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
 
-## Name
-Choose a self-explaining name for your project.
+![jeu-paf-coup-de-poing-punch](https://user-images.githubusercontent.com/79942403/194408024-d2b9f4d0-c38d-4ba4-abb3-9f27cdfc761a.png)
+figure 4 : Ken utilise sa jauge et fait son coup de poing special contre Ryu
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+![jeu-paf-hitbox-mouv-](https://user-images.githubusercontent.com/79942403/194409630-58f73674-898c-4efd-9236-6721187ac6e6.png)
+figure 5 : les deux joueurs ne peuvent pas se superposer
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+![jeu-paf-gameover](https://user-images.githubusercontent.com/79942403/194410104-7ba4f66e-283b-4d83-a0d9-19f3fb8bdadf.png)
+figure 6 : le jeu est fini, le gagnant est Ken
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
